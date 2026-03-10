@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "name": "zoro-vault-mcp",
+  "description": "Zoro AI Employee Vault MCP Server",
+  "mcp_servers": [
+    {
+      "name": "zoro-vault",
+      "command": "python",
+      "args": ["zoro_mcp_server.py"],
+      "env": {
+        "PYTHONPATH": "."
+      },
+      "transport": {
+        "type": "stdio"
+      },
+      "timeout": 30
+    }
+  ]
+}

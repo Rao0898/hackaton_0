@@ -1,0 +1,7 @@
+Date,Description,Amount,Type,Category
+2026-03-01,Client Payment - Web Design,5000,Credit,Revenue
+2026-03-02,Office Rent,-1500,Debit,Expense
+2026-03-02,AWS Server Hosting,-50,Debit,Expense
+2026-03-03,Consultation Fee - AI Setup,200,Credit,Revenue
+2026-03-03,Adobe Subscription,-20,Debit,Expense2026-03-03,Invoice Payment,100.0
+2026-03-04,Invoice Payment,100.0

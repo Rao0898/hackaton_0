@@ -1,0 +1,6 @@
+selenium_whatsapp_session/ 
+linkedin_session/ 
+Obsidian/ 
+*.exe 
+*.dll 
+*.log 

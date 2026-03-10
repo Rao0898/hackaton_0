@@ -8,7 +8,10 @@ D:\hackaton-0\
 │   ├── Needs_Action/        # Raw WhatsApp messages and tasks needing attention
 │   ├── Pending_Approval/    # Summarized content awaiting approval
 │   ├── Approved/            # Approved tasks ready for execution
-│   └── Done/                # Completed tasks
+│   ├── Executed/            # Completed tasks
+│   ├── Archived/            # Archived tasks
+│   ├── bank_transactions.csv # Financial data for AI monitoring
+│   └── CEO_Briefing.md      # Automated executive summary & financial insights
 ├── insta_Posts/             # Instagram post assets
 ├── linkedin_session/        # LinkedIn Chrome session data
 ├── selenium_whatsapp_session/ # WhatsApp session data
@@ -35,30 +38,45 @@ D:\hackaton-0\
 - **insta-post.py**: Placeholder for Instagram post automation
 - **whatsapp_sender.py**: Sends WhatsApp messages
 
-### 3. Orchestration Component (Newly Built)
+### 3. Orchestration & Intelligence (Newly Built)
 - **zoro_orchestration.py**: Main orchestration system that:
-  - Monitors `AI_Employee_Vault/Approved/` folder for new tasks
-  - Executes appropriate actions based on file content
-  - Moves completed files to `AI_Employee_Vault/Done/` folder
-  - Processes raw WhatsApp messages into post drafts
-  - Places drafts in `AI_Employee_Vault/Pending_Approval/` for review
+  - Monitors AI_Employee_Vault/Approved/ folder for new tasks.
+  - Executes appropriate actions based on file content.
+  - Moves completed files to AI_Employee_Vault/Executed/ folder.
+  - Financial Skill: Periodically audits bank_transactions.csv to track expenses.
+  - CEO Insights: Generates CEO_Briefing.md with financial forecasts and task summaries.
 
 ## How the System Works
 
 ### Task Execution Flow
-1. User places a file in `AI_Employee_Vault/Approved/` folder
+1. User places a file in `AI_Employee_Vault/Approved/` folder.
 2. File content determines the action:
    - Contains "Action: LinkedIn" → Runs `linkedin_post_automation.py`
    - Contains "Action: Instagram" → Runs `insta-post.py`
-3. After execution, file is moved to `AI_Employee_Vault/Done/` folder
-4. All activities are logged
+3. After execution, file is moved to `AI_Employee_Vault/Executed/` folder.
+4. All activities are logged.
 
 ### Message Summarization Flow
-1. Raw WhatsApp messages are placed in `AI_Employee_Vault/Needs_Action/` folder
-2. Orchestration system periodically scans for new messages
-3. Converts raw messages into clean post drafts
-4. Places drafts in `AI_Employee_Vault/Pending_Approval/` folder
-5. Original messages are archived
+Raw WhatsApp messages are placed in AI_Employee_Vault/Needs_Action/ folder.
+
+Orchestration system periodically scans for new messages.
+
+Converts raw messages into clean post drafts.
+
+Places drafts in AI_Employee_Vault/Pending_Approval/ folder.
+
+### Financial Monitoring & CEO Briefing (Agent Skill)
+Zoro monitors the bank_transactions.csv for any new financial activity.
+
+It categorizes spending (SaaS, Salaries, Marketing) and detects anomalies.
+
+Outcome: Generates a professional CEO_Briefing.md which includes:
+
+Financial Health: Current balance and monthly burn rate.
+
+Market Insights: Automated suggestions based on current task trends.
+
+Executive Summary: A bird's-eye view of all automated operations.
 
 ## Usage
 
@@ -72,23 +90,27 @@ start_zoro.bat
 ```
 
 ### Creating Tasks
-To trigger a LinkedIn post, create a file in `AI_Employee_Vault/Approved/` with content:
+To trigger a LinkedIn post, create a file in AI_Employee_Vault/Approved/ with content:
 ```
 Action: LinkedIn
 Post: New product launch announcement
 ```
 
-To trigger an Instagram post, create a file in `AI_Employee_Vault/Approved/` with content:
+To trigger an Instagram post, create a file in AI_Employee_Vault/Approved/ with content:
 ```
 Action: Instagram
 Post: Weekly update with team photo
 ```
+
+### Checking Financials
+Open AI_Employee_Vault/CEO_Briefing.md to see the AI's latest financial audit and operational summary.
 
 ## Dependencies
 - selenium: Web automation
 - webdriver-manager: ChromeDriver management
 - Pillow: Image handling
 - watchdog: File system monitoring
+- pandas: For CSV/Financial data processing
 
 ## Error Handling
 - Failed executions are logged but files are still moved to done directory
